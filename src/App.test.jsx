@@ -30,3 +30,18 @@ test('renders todotable', () => {
   const table = screen.getByRole('table');
   expect(table).toHaveTextContent(/go to coffee/i);
 });
+
+// Clear testi
+test('clear toDo', () => {
+  render(<App />);
+  const desc = screen.getByPlaceholderText("Description");
+  fireEvent.change(desc, { target: { value: "Code React" } });
+  const date = screen.getByPlaceholderText("Date");
+  fireEvent.change(date, { target: { value: "21.10.2024" } });
+  const button = screen.getByText("Add");
+  fireEvent.click(button);
+  const clearButton = screen.getByText("Clear");
+  fireEvent.click(clearButton);
+  expect(table).toHaveTextContent(/Code React/i);
+  expect(table).toHaveTextContent("21.10.2024");
+});

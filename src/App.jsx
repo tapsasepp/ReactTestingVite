@@ -15,6 +15,11 @@ function App() {
     setTodo({ ...todo, [event.target.name]: event.target.value });
   };
 
+  //Clear painike
+  const clearTodo = () => {
+    setTodos([]);
+  };
+
   return (
     <div className="App">
       <input
@@ -30,6 +35,7 @@ function App() {
         onChange={inputChanged}
       />
       <button onClick={addTodo}>Add</button>
+      <button onClick={clearTodo}>Clear</button>
       <TodoTable todos={todos} />
     </div>
   );
